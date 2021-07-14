@@ -77,6 +77,7 @@ export const Input = React.memo(function InnerInput({
       minLength={1}
       maxLength={79}
       spellCheck="false"
+      fontSize="20px"
     />
   )
 })

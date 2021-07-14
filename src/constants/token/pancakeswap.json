@@ -7,7 +7,7 @@
     "patch": 1
   },
   "tags": {},
-  "logoURI": "/images/coins/wbnb.png",
+  "logoURI": "/images/coins/wKUP.png",
   "keywords": ["pancake", "default"],
   "tokens": [
     {
@@ -25,16 +25,16 @@
       "decimals": 18
     },
     {
-      "name": "WBNB Token",
-      "symbol": "WBNB",
+      "name": "WKUP Token",
+      "symbol": "WKUP",
       "address": "0xae13d989dac2f0debff460ac112a837c89baa7cd",
       "chainId": 97,
       "decimals": 18,
       "logoURI": "/images/coins/BUSD.png"
     },
     {
-      "name": "WBNB Token",
-      "symbol": "WBNB",
+      "name": "WKUP Token",
+      "symbol": "WKUP",
       "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
       "chainId": 56,
       "decimals": 18

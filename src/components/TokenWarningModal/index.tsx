@@ -16,17 +16,17 @@ import { AutoColumn } from '../Column'
 const { main: Main, blue: Blue } = TYPE
 
 const Wrapper = styled.div<{ error: boolean }>`
-  background: ${({ theme }) => transparentize(0.6, theme.colors.tertiary)};
+  background: rgba(255, 255, 255, 0.8);
   padding: 0.75rem;
   border-radius: 20px;
 `
 
 const WarningContainer = styled.div`
-  max-width: 420px;
+  width: 500px;
   width: 100%;
   padding: 1rem;
-  background: rgba(242, 150, 2, 0.05);
-  border: 1px solid #f3841e;
+  /* background: rgba(255, 255, 255, 0.8); */
+  border: 5px solid #fff;
   border-radius: 20px;
   overflow: auto;
 `
@@ -76,7 +76,7 @@ function TokenWarningCard({ token }: TokenWarningCardProps) {
           </Main>
           {chainId && (
             <ExternalLink style={{ fontWeight: 400 }} href={getEtherscanLink(chainId, token.address, 'token')}>
-              <Blue title={token.address}>{shortenAddress(token.address)} (View on BscScan)</Blue>
+              <Blue title={token.address}>{shortenAddress(token.address)} (View on KCC Explorer)</Blue>
             </ExternalLink>
           )}
         </AutoColumn>
@@ -106,15 +106,15 @@ export default function TokenWarningModal({
             <StyledWarningIcon />
             <Text color="failure">Token imported</Text>
           </AutoRow>
-          <Text>
-            Anyone can create an BEP20 token on BSC with <em>any</em> name, including creating fake versions of existing
+          <Text style={{textAlign:'justify'}}>
+            Anyone can create a token on KCC with <em>any</em> name, including creating fake versions of existing
             tokens and tokens that claim to represent projects that do not have a token.
           </Text>
-          <Text>
+          <Text style={{textAlign:'justify'}}>
             This interface can load arbitrary tokens by token addresses. Please take extra caution and do your research
             when interacting with arbitrary BEP20 tokens.
           </Text>
-          <Text>
+          <Text style={{textAlign:'justify'}}>
             If you purchase an arbitrary token, <strong>you may be unable to sell it back.</strong>
           </Text>
           {tokens.map((token) => {

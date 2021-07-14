@@ -16,7 +16,41 @@ const StyledSlippageToleranceSettings = styled.div`
 const Option = styled.div`
   padding: 0 4px;
 `
+const StyledButton = styled(Button)`
+  font-family: 'Roboto', sans-serif !important;
+  background-color: #48cae4;
+  margin-right: 5px;
+  height: 40px;
+  font-weight: 600;
+  /* width: 40px; */
+  box-shadow: none;
+  transition: all 0s ease-in-out;
+    border: 2px solid #fff !important;
 
+  & > svg,
+  & > svg > * {
+    fill: #fff;
+  }
+
+  &:hover {
+    color: #48cae4;
+    background-color: #fff;
+    border: 2px solid #48cae4 !important;
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+`
 const Options = styled.div`
   align-items: center;
   display: flex;
@@ -39,6 +73,13 @@ const Label = styled.div`
   align-items: center;
   display: flex;
   margin-bottom: 8px;
+`
+const StyledText = styled.div`
+  color: #000 !important;
+
+  & > * > *{
+  color: #000 !important;
+  }
 `
 
 const predefinedValues = [
@@ -85,7 +126,7 @@ const SlippageToleranceSettings = () => {
     <StyledSlippageToleranceSettings>
       <Label>
         <Text style={{ fontWeight: 600 }}>
-          <TranslatedText translationId={88}>Slippage tolerance</TranslatedText>
+          <StyledText>Slippage tolerance</StyledText>
         </Text>
         <QuestionHelper text="Your transaction will revert if the price changes unfavorably by more than this percentage." />
       </Label>
@@ -96,9 +137,9 @@ const SlippageToleranceSettings = () => {
 
             return (
               <Option key={predefinedValue}>
-                <Button variant={value === predefinedValue ? 'primary' : 'tertiary'} onClick={handleClick}>
+                <StyledButton variant={value === predefinedValue ? 'primary' : 'tertiary'} onClick={handleClick}>
                   {label}
-                </Button>
+                </StyledButton>
               </Option>
             )
           })}

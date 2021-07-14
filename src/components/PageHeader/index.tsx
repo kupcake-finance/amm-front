@@ -30,12 +30,77 @@ const HistoryIcon = () => (
 )
 
 const StyledPageHeader = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
-  padding: 24px;
+  border-bottom: 1px solid #e4e4e4;
+  /* padding: 24px 0; */
 `
 
 const Details = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const StyledButton = styled(IconButton)`
+  background-color: #48cae4;
+  /* margin-right: 5px; */
+  height: 80px;
+  width: 50px;
+  box-shadow: none;
+  transition: all 0s ease-in-out;
+  border-radius: 0 !important;
+
+  & > svg,
+  & > svg > * {
+    fill: #fff;
+  }
+
+  &:hover {
+    background-color: #fff;
+    /* border: 2px solid #48cae4 !important; */
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+`
+
+const StyledLeftButton = styled(StyledButton)`
+  &:hover {
+      border-top-left-radius: 21px !important;
+      border: 2px solid #48cae4 !important;
+      /* border-bottom: 1px solid #48cae4 !important; */
+  }
+`
+
+const StyledRightButton = styled(StyledButton)`
+  &:hover {
+      border-top-right-radius: 21px !important;
+      border: 2px solid #48cae4 !important;
+      /* border-bottom: 1px solid #48cae4 !important; */
+  }
+`
+
+const StyledHeading = styled(Heading)`
+  font-family: 'M PLUS Rounded 1c', sans-serif !important;
+  font-size: 27px;
+  color: #48cae4;
+  font-weight: 800;
+  & > span {
+    color: #ff629a;
+  }
+`
+
+const FullFlex = styled(Flex)`
+  width: 100%;
 `
 
 const PageHeader = ({ title, description, children }: PageHeaderProps) => {
@@ -44,22 +109,24 @@ const PageHeader = ({ title, description, children }: PageHeaderProps) => {
 
   return (
     <StyledPageHeader>
-      <Flex alignItems="center">
+      <FullFlex alignItems="center" justifyContent="space-between">
+        <StyledLeftButton variant="text" onClick={onPresentRecentTransactions} title="Recent transactions">
+          <HistoryIcon />
+        </StyledLeftButton>
         <Details>
-          <Heading mb="8px">{title}</Heading>
+          <StyledHeading mb="8px">
+            <span>KUP</span>{title}
+          </StyledHeading>
           {description && (
-            <Text color="textSubtle" fontSize="14px">
+            <Text style={{color:'#000'}} fontSize="15px">
               {description}
             </Text>
           )}
         </Details>
-        <IconButton variant="text" onClick={onPresentSettings} title="Settings">
+        <StyledRightButton variant="primary" onClick={onPresentSettings} title="Settings">
           <CogIcon />
-        </IconButton>
-        <IconButton variant="text" onClick={onPresentRecentTransactions} title="Recent transactions">
-          <HistoryIcon />
-        </IconButton>
-      </Flex>
+        </StyledRightButton>
+      </FullFlex>
       {children && <Text mt="16px">{children}</Text>}
     </StyledPageHeader>
   )

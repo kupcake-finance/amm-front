@@ -7,16 +7,16 @@ describe('Remove Liquidity', () => {
     )
   })
 
-  it('bnb remove', () => {
+  it('KUP remove', () => {
     cy.visit('/remove/ETH/0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82')
-    cy.get('#remove-liquidity-tokena-symbol').should('contain.text', 'BNB')
+    cy.get('#remove-liquidity-tokena-symbol').should('contain.text', 'KUP')
     cy.get('#remove-liquidity-tokenb-symbol').should('contain.text', 'CAKE')
   })
 
-  it('bnb remove swap order', () => {
+  it('KUP remove swap order', () => {
     cy.visit('/remove/0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82/ETH')
     cy.get('#remove-liquidity-tokena-symbol').should('contain.text', 'CAKE')
-    cy.get('#remove-liquidity-tokenb-symbol').should('contain.text', 'BNB')
+    cy.get('#remove-liquidity-tokenb-symbol').should('contain.text', 'KUP')
   })
 
   it('loads the two correct tokens', () => {

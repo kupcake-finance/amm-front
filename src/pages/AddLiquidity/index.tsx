@@ -292,6 +292,7 @@ export default function AddLiquidity({
     <>
       <CardNav activeIndex={1} />
       <AppBody>
+        
         <AddRemoveTabs adding />
         <Wrapper>
           <TransactionConfirmationModal

@@ -28,7 +28,13 @@ const Field = styled.div`
     margin-left: 8px;
   }
 `
+const StyledText = styled.div`
+  color: #000 !important;
 
+  & > * > *{
+  color: #000 !important;
+  }
+`
 const TransactionDeadlineSetting = () => {
   const [deadline, setDeadline] = useUserDeadline()
   const [value, setValue] = useState(deadline / 60) // deadline in minutes
@@ -58,7 +64,7 @@ const TransactionDeadlineSetting = () => {
     <StyledTransactionDeadlineSetting>
       <Label>
         <Text style={{ fontWeight: 600 }}>
-          <TranslatedText translationId={90}>Transaction deadline</TranslatedText>
+          <StyledText>Transaction deadline</StyledText>
         </Text>
         <QuestionHelper text="Your transaction will revert if it is pending for more than this long." />
       </Label>

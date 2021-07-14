@@ -1,6 +1,6 @@
 import { ChainId } from '@pancakeswap-libs/sdk'
 import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { Button, LinkExternal } from '@pancakeswap-libs/uikit'
 import { ArrowUpCircle } from 'react-feather'
 import { AutoColumn } from '../Column'
@@ -12,7 +12,33 @@ type TransactionSubmittedContentProps = {
   hash: string | undefined
   chainId: ChainId
 }
+const StyledButton = styled(Button)`
+  background-color: #48cae4;
+  box-shadow: none;
+  transition: all 0s ease-in-out;
+  border: 2px solid white;
+  font-size: 20px;
+  font-weight: 600;
 
+  &:hover {
+    background-color: #fff;
+    border: 2px solid #48cae4 !important;
+    color: #48cae4;
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+`
 const TransactionSubmittedContent = ({ onDismiss, chainId, hash }: TransactionSubmittedContentProps) => {
   const theme = useContext(ThemeContext)
 
@@ -27,9 +53,9 @@ const TransactionSubmittedContent = ({ onDismiss, chainId, hash }: TransactionSu
           {chainId && hash && (
             <LinkExternal href={getEtherscanLink(chainId, hash, 'transaction')}>View on bscscan</LinkExternal>
           )}
-          <Button onClick={onDismiss} mt="20px">
+          <StyledButton onClick={onDismiss} mt="20px">
             Close
-          </Button>
+          </StyledButton>
         </AutoColumn>
       </Section>
     </Wrapper>
