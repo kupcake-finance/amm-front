@@ -84,9 +84,11 @@ const StyledNumericalInput = styled(NumericalInput)`
 const MaxButton = styled(Button)`
   font-weight: 600;
 
-  &:hover {
-    border: 1px solid #000;
-    color: #000;
+  &:hover, &:focus {
+    border: 1px solid #48cae4;
+    box-shadow: none;
+    background-color: #fff;
+    color: #48cae4;
   }
 `
 

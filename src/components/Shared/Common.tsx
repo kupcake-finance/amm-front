@@ -5,7 +5,7 @@ import { darken } from 'polished'
 import { ArrowLeft, X } from 'react-feather'
 
 export const Button = styled.button.attrs<{ warning: boolean }, { backgroundColor: string }>(({ warning, theme }) => ({
-  backgroundColor: warning ? theme.colors.failure : theme.colors.primary
+  backgroundColor: warning ? theme.colors.failure : theme.colors.primary,
 }))`
   padding: 1rem 2rem 1rem 2rem;
   border-radius: 3rem;
@@ -65,20 +65,38 @@ export const LinkStyledButton = styled.button<{ disabled?: boolean }>`
 export const StyledInternalLink = styled(Link)`
   text-decoration: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.primary};
-  font-weight: 500;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  max-width: 200px;
+  border-radius: 30px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  font-family: 'M PLUS Rounded 1c', sans-serif !important;
+  background-color: #48cae4;
+  color: #fff;
+  border: 2px solid #fff;
 
   :hover {
-    text-decoration: underline;
+    color: #48cae4;
+    background-color: #fff;
+    border: 2px solid #48cae4;
   }
 
   :focus {
-    outline: none;
-    text-decoration: underline;
+    color: #48cae4;
+    background-color: #fff;
+    border: 2px solid #48cae4;
   }
 
   :active {
-    text-decoration: none;
+    color: #48cae4;
+    background-color: #fff;
+    border: 2px solid #48cae4;
   }
 `
 

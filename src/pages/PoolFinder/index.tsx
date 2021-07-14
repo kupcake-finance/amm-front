@@ -1,4 +1,5 @@
 import { Currency, ETHER, JSBI, TokenAmount } from '@pancakeswap-libs/sdk'
+import styled from 'styled-components'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Button, ChevronDownIcon, AddIcon, CardBody, Text } from '@pancakeswap-libs/uikit'
 import CardNav from 'components/CardNav'
@@ -23,6 +24,34 @@ enum Fields {
   TOKEN1 = 1
 }
 
+const StyledSwapButton = styled(Button)`
+  background-color: #48cae4;
+  box-shadow: none;
+  transition: all 0s ease-in-out;
+  border: 2px solid white;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px auto;
+
+  &:hover {
+    background-color: #fff;
+    border: 2px solid #48cae4 !important;
+    color: #48cae4;
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+`
 export default function PoolFinder() {
   const { account } = useActiveWeb3React()
 
@@ -128,7 +157,7 @@ export default function PoolFinder() {
                       <Text style={{ textAlign: 'center' }}>You don’t have liquidity in this pool yet.</Text>
                       <StyledInternalLink to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}>
                         <Text style={{ textAlign: 'center' }}>
-                          <TranslatedText translationId={100}>Add Liquidity</TranslatedText>
+                          <TranslatedText translationId={9999}>Add Liquidity</TranslatedText>
                         </Text>
                       </StyledInternalLink>
                     </AutoColumn>

@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { Pair } from '@pancakeswap-libs/sdk'
 import { Button, CardBody, Text } from '@pancakeswap-libs/uikit'
 import { Link } from 'react-router-dom'
@@ -9,8 +9,8 @@ import FullPositionCard from 'components/PositionCard'
 import { useUserHasLiquidityInAllTokens } from 'data/V1'
 import { useTokenBalancesWithLoadingIndicator } from 'state/wallet/hooks'
 import { StyledInternalLink, TYPE } from 'components/Shared'
-import { LightCard } from 'components/Card'
-import { RowBetween } from 'components/Row'
+import { LightCard, GreyCard } from 'components/Card'
+import { RowBetween, RowCenter } from 'components/Row'
 import { AutoColumn } from 'components/Column'
 
 import { useActiveWeb3React } from 'hooks'
@@ -24,6 +24,49 @@ import AppBody from '../AppBody'
 
 const { body: Body } = TYPE
 
+const StyledSwapButton = styled(Button)`
+  background-color: #48cae4;
+  color: #fff;
+  display: inline-block !important;
+  box-shadow: none;
+  transition: all 0s ease-in-out;
+  border: 2px solid white;
+  font-size: 25px;
+  font-weight: 600;
+  padding: 10px;
+  /* border-radius: 30px; */
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: center;
+  text-transform: capitalize !important;
+  border: 4px solid #fff;
+  &:hover {
+    background-color: #fff;
+    border: 4px solid #48cae4 !important;
+    color: #48cae4;
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+`
+const StyledPageHeader = styled(PageHeader)`
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  border: 5px solid #fff !important;
+`
 export default function Pool() {
   const theme = useContext(ThemeContext)
   const { account } = useActiveWeb3React()
@@ -63,17 +106,17 @@ export default function Pool() {
     <>
       <CardNav activeIndex={1} />
       <AppBody>
-        <PageHeader title="Liquidity" description="Add liquidity to receive LP tokens">
-          <Button id="join-pool-button" as={Link} to="/add/ETH">
-            <TranslatedText translationId={100}>Add Liquidity</TranslatedText>
-          </Button>
-        </PageHeader>
+        <StyledPageHeader title="Liquidity" description="Add liquidity to receive LP tokens">
+          <StyledSwapButton as={Link} to="/add/ETH">
+            Add Liquidity
+          </StyledSwapButton>
+        </StyledPageHeader>
         <AutoColumn gap="lg" justify="center">
           <CardBody>
             <AutoColumn gap="12px" style={{ width: '100%' }}>
-              <RowBetween padding="0 8px">
-                <Text color={theme.colors.text}>
-                  <TranslatedText translationId={102}>Your Liquidity</TranslatedText>
+              <RowCenter padding="0 8px">
+                <Text style={{ color: '#ff629a', fontWeight: 600 }} fontSize="20px">
+                  YOUR LIQUIDITY
                 </Text>
                 <Question
                   text={TranslateString(
@@ -81,20 +124,20 @@ export default function Pool() {
                     'When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below.'
                   )}
                 />
-              </RowBetween>
+              </RowCenter>
 
               {!account ? (
-                <LightCard padding="40px">
+                <GreyCard padding="40px">
                   <Body color={theme.colors.textDisabled} textAlign="center">
                     Connect to a wallet to view your liquidity.
                   </Body>
-                </LightCard>
+                </GreyCard>
               ) : v2IsLoading ? (
-                <LightCard padding="40px">
+                <GreyCard padding="40px">
                   <Body color={theme.colors.textDisabled} textAlign="center">
                     <Dots>Loading</Dots>
                   </Body>
-                </LightCard>
+                </GreyCard>
               ) : allV2PairsWithLiquidity?.length > 0 ? (
                 <>
                   {allV2PairsWithLiquidity.map((v2Pair) => (
@@ -102,24 +145,31 @@ export default function Pool() {
                   ))}
                 </>
               ) : (
-                <LightCard padding="40px">
-                  <Body color={theme.colors.textDisabled} textAlign="center">
-                    <TranslatedText translationId={104}>No liquidity found.</TranslatedText>
+                <GreyCard padding="40px">
+                  <Body color="#000" textAlign="center">
+                    No liquidity found.
                   </Body>
-                </LightCard>
+                </GreyCard>
               )}
 
               <div>
-                <Text fontSize="14px" style={{ padding: '.5rem 0 .5rem 0' }}>
-                  {hasV1Liquidity
-                    ? 'Uniswap V1 liquidity found!'
-                    : TranslateString(106, "Don't see a pool you joined?")}{' '}
+                <Text
+                  fontSize="14px"
+                  style={{
+                    padding: '.5rem 0 .5rem 0',
+                    color: '#000',
+                    textAlign: 'center',
+                    fontSize: '16px',
+                    fontWeight: 600,
+                  }}
+                >
+                  {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
                   <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
-                    {hasV1Liquidity ? 'Migrate now.' : TranslateString(108, 'Import it.')}
+                    {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
                   </StyledInternalLink>
                 </Text>
                 <Text fontSize="14px" style={{ padding: '.5rem 0 .5rem 0' }}>
-                  Or, if you staked your LP tokens in a farm, unstake them to see them here.
+                  Are your LP tokens in a farm, unstake them to see them here.
                 </Text>
               </div>
             </AutoColumn>

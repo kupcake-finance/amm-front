@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import styled from 'styled-components'
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
 import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from '@pancakeswap-libs/sdk'
@@ -37,6 +38,34 @@ import { PoolPriceBar } from './PoolPriceBar'
 import { ROUTER_ADDRESS } from '../../constants'
 
 const { italic: Italic } = TYPE
+
+const StyledSwapButton = styled(Button)`
+  background-color: #48cae4;
+  box-shadow: none;
+  transition: all 0s ease-in-out;
+  border: 2px solid white;
+  font-size: 20px;
+  font-weight: 600;
+
+  &:hover {
+    background-color: #fff;
+    border: 2px solid #48cae4 !important;
+    color: #48cae4;
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+`
 
 export default function AddLiquidity({
   match: {
@@ -226,10 +255,10 @@ export default function AddLiquidity({
             {`${currencies[Field.CURRENCY_A]?.symbol}/${currencies[Field.CURRENCY_B]?.symbol} Pool Tokens`}
           </UIKitText>
         </Row>
-        <Italic fontSize={12} textAlign="left" padding="8px 0 0 0 ">
-          {`Output is estimated. If the price changes by more than ${
+        <Italic fontSize={12} textAlign="center" padding="8px 0 0 0 ">
+          {`Estimated price. If the price changes by more than ${
             allowedSlippage / 100
-          }% your transaction will revert.`}
+          }% your transaction will revert (according to your slippage settings).`}
         </Italic>
       </AutoColumn>
     )
@@ -353,10 +382,10 @@ export default function AddLiquidity({
               {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
                 <div>
                   <UIKitText
-                    style={{ textTransform: 'uppercase', fontWeight: 600 }}
+                    style={{ textTransform: 'uppercase', fontWeight: 600, textAlign:"center", color:"#ff629a" }}
                     color="textSubtle"
-                    fontSize="12px"
-                    mb="2px"
+                    fontSize="15px"
+                    mb="10px"
                   >
                     {noLiquidity ? 'Initial prices and pool share' : 'Prices and pool share'}
                   </UIKitText>
@@ -382,7 +411,7 @@ export default function AddLiquidity({
                     isValid && (
                       <RowBetween>
                         {approvalA !== ApprovalState.APPROVED && (
-                          <Button
+                          <StyledSwapButton
                             onClick={approveACallback}
                             disabled={approvalA === ApprovalState.PENDING}
                             style={{ width: approvalB !== ApprovalState.APPROVED ? '48%' : '100%' }}
@@ -392,10 +421,10 @@ export default function AddLiquidity({
                             ) : (
                               `Approve ${currencies[Field.CURRENCY_A]?.symbol}`
                             )}
-                          </Button>
+                          </StyledSwapButton>
                         )}
                         {approvalB !== ApprovalState.APPROVED && (
-                          <Button
+                          <StyledSwapButton
                             onClick={approveBCallback}
                             disabled={approvalB === ApprovalState.PENDING}
                             style={{ width: approvalA !== ApprovalState.APPROVED ? '48%' : '100%' }}
@@ -405,11 +434,11 @@ export default function AddLiquidity({
                             ) : (
                               `Approve ${currencies[Field.CURRENCY_B]?.symbol}`
                             )}
-                          </Button>
+                          </StyledSwapButton>
                         )}
                       </RowBetween>
                     )}
-                  <Button
+                  <StyledSwapButton
                     onClick={() => {
                       if (expertMode) {
                         onAdd()
@@ -426,7 +455,7 @@ export default function AddLiquidity({
                     fullWidth
                   >
                     {error ?? 'Supply'}
-                  </Button>
+                  </StyledSwapButton>
                 </AutoColumn>
               )}
             </AutoColumn>

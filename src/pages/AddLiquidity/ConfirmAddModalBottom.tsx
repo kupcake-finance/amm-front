@@ -1,5 +1,6 @@
 import { Currency, CurrencyAmount, Fraction, Percent } from '@pancakeswap-libs/sdk'
 import React from 'react'
+import styled from 'styled-components'
 import { Button } from '@pancakeswap-libs/uikit'
 import { RowBetween, RowFixed } from '../../components/Row'
 import CurrencyLogo from '../../components/CurrencyLogo'
@@ -8,6 +9,34 @@ import { TYPE } from '../../components/Shared'
 
 const { body: Body } = TYPE
 
+const StyledSwapButton = styled(Button)`
+  background-color: #48cae4;
+  box-shadow: none;
+  transition: all 0s ease-in-out;
+  border: 2px solid white;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px auto;
+
+  &:hover {
+    background-color: #fff;
+    border: 2px solid #48cae4 !important;
+    color: #48cae4;
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+`
 export function ConfirmAddModalBottom({
   noLiquidity,
   price,
@@ -58,9 +87,9 @@ export function ConfirmAddModalBottom({
         <Body>Share of Pool:</Body>
         <Body>{noLiquidity ? '100' : poolTokenPercentage?.toSignificant(4)}%</Body>
       </RowBetween>
-      <Button mt="20px" onClick={onAdd}>
+      <StyledSwapButton mt="20px" onClick={onAdd}>
         {noLiquidity ? 'Create Pool & Supply' : 'Confirm Supply'}
-      </Button>
+      </StyledSwapButton>
     </>
   )
 }

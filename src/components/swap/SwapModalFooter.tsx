@@ -70,7 +70,7 @@ export default function SwapModalFooter({
     <>
       <AutoColumn gap="0px">
         <RowBetween align="center">
-          <Text fontSize="17px">Price</Text>
+          <Text fontSize="17px" style={{color:"#ff629a", fontWeight:600}} >Price</Text>
           <Text
             fontSize="17px"
             style={{
@@ -91,7 +91,7 @@ export default function SwapModalFooter({
 
         <RowBetween>
           <RowFixed>
-            <Text fontSize="17px">
+            <Text fontSize="17px" style={{color:"#ff629a", fontWeight:600}}>
               {trade.tradeType === TradeType.EXACT_INPUT ? 'Minimum received' : 'Maximum sold'}
             </Text>
             <QuestionHelper text="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed." />
@@ -111,14 +111,14 @@ export default function SwapModalFooter({
         </RowBetween>
         <RowBetween>
           <RowFixed>
-            <Text fontSize="17px">Price Impact</Text>
+            <Text fontSize="17px" style={{color:"#ff629a", fontWeight:600}}>Price Impact</Text>
             <QuestionHelper text="The difference between the market price and your price due to trade size." />
           </RowFixed>
           <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />
         </RowBetween>
         <RowBetween>
           <RowFixed>
-            <Text fontSize="17px">Provider Fee</Text>
+            <Text fontSize="17px" style={{color:"#ff629a", fontWeight:600}}>Provider Fee</Text>
             <QuestionHelper text="For each trade a 0.2% fee is paid. 0.17% goes to liquidity providers and 0.03% goes to the PancakeSwap treasury." />
           </RowFixed>
           <Text fontSize="17px">

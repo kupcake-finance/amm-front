@@ -2,6 +2,7 @@ import { ChainId } from '@pancakeswap-libs/sdk'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { Button, LinkExternal } from '@pancakeswap-libs/uikit'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { ArrowUpCircle } from 'react-feather'
 import { AutoColumn } from '../Column'
 import { getEtherscanLink } from '../../utils'
@@ -39,6 +40,13 @@ const StyledButton = styled(Button)`
     background-color: #fff;
   }
 `
+
+const StyledCloudUploadIcon = styled(CloudUploadIcon)`
+  font-size: 100px !important;
+  color: #ff629a !important;
+  margin: -10px auto !important;
+`
+
 const TransactionSubmittedContent = ({ onDismiss, chainId, hash }: TransactionSubmittedContentProps) => {
   const theme = useContext(ThemeContext)
 
@@ -47,11 +55,11 @@ const TransactionSubmittedContent = ({ onDismiss, chainId, hash }: TransactionSu
       <Section>
         <ContentHeader onDismiss={onDismiss}>Transaction submitted</ContentHeader>
         <ConfirmedIcon>
-          <ArrowUpCircle strokeWidth={0.5} size={97} color={theme.colors.primary} />
+          <StyledCloudUploadIcon />
         </ConfirmedIcon>
         <AutoColumn gap="8px" justify="center">
           {chainId && hash && (
-            <LinkExternal href={getEtherscanLink(chainId, hash, 'transaction')}>View on bscscan</LinkExternal>
+            <LinkExternal href={getEtherscanLink(chainId, hash, 'transaction')}>View on KCC Explorer</LinkExternal>
           )}
           <StyledButton onClick={onDismiss} mt="20px">
             Close

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { JSBI, Pair, Percent } from '@pancakeswap-libs/sdk'
+import { StyledInternalLink, TYPE } from 'components/Shared'
 import { Button, Card as UIKitCard, CardBody, Text } from '@pancakeswap-libs/uikit'
 import { darken } from 'polished'
 import { ChevronDown, ChevronUp } from 'react-feather'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useTotalSupply } from '../../data/TotalSupply'
-
 import { useActiveWeb3React } from '../../hooks'
 import { useTokenBalance } from '../../state/wallet/hooks'
 import { currencyId } from '../../utils/currencyId'
@@ -21,11 +21,43 @@ import { Dots } from '../swap/styleds'
 export const FixedHeightRow = styled(RowBetween)`
   height: 24px;
 `
+const StyledButton = styled(Button)`
+  background-color: #48cae4;
+  box-shadow: none;
+  transition: all 0s ease-in-out;
+  border: 2px solid white;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px auto;
+
+  &:hover {
+    background-color: #fff;
+    border: 2px solid #48cae4 !important;
+    color: #48cae4;
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+`
+
+const CustomLink = styled(Link)`
+  text-decoration: none !important;
+`
 
 export const HoverCard = styled(Card)`
-  border: 1px solid ${({ theme }) => theme.colors.invertedContrast};
+  border: 1px solid ${({ theme }) => darken(0.06, theme.colors.invertedContrast)};
   :hover {
-    border: 1px solid ${({ theme }) => darken(0.06, theme.colors.invertedContrast)};
+    border: 1px solid #48cae4;
   }
 `
 
@@ -199,16 +231,20 @@ export default function FullPositionCard({ pair }: PositionCardProps) {
             </FixedHeightRow>
 
             <RowBetween marginTop="10px">
-              <Button as={Link} to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`} style={{ width: '48%' }}>
+              <StyledInternalLink
+                as={CustomLink}
+                to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}
+                style={{ width: '48%' }}
+              >
                 Add
-              </Button>
-              <Button
-                as={Link}
+              </StyledInternalLink>
+              <StyledInternalLink
+                as={CustomLink}
                 style={{ width: '48%' }}
                 to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}
               >
                 Remove
-              </Button>
+              </StyledInternalLink>
             </RowBetween>
           </AutoColumn>
         )}

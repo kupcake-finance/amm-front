@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Heading, IconButton, CloseIcon } from '@pancakeswap-libs/uikit'
+import Divider from '@material-ui/core/Divider';
 import { AutoColumn, ColumnCenter } from '../Column'
 
 
@@ -27,8 +28,13 @@ const StyledSwapButton = styled(IconButton)`
   box-shadow: none;
   transition: all 0s ease-in-out;
   border: 2px solid white;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 600;
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  border-radius: 0;
+  border-bottom-left-radius: 20px;
 
   &:hover {
     background-color: #fff;
@@ -48,6 +54,12 @@ const StyledSwapButton = styled(IconButton)`
   &:active {
     background-color: #fff;
   }
+
+  & > svg,
+    & > svg > * {
+      fill: #fff;
+      width: 30px;
+    }
 `
 
 /**
@@ -56,6 +68,7 @@ const StyledSwapButton = styled(IconButton)`
 const StyledContentHeader = styled.div`
   align-items: center;
   display: flex;
+  position: relative;
 
   & > ${Heading} {
     flex: 1;
@@ -67,11 +80,25 @@ type ContentHeaderProps = {
   onDismiss: () => void
 }
 
+const StyledHeading = styled(Heading)`
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: 'M PLUS Rounded 1c',sans-serif !important;
+  font-weight: 800;
+  color: #48cae4;
+  /* background-color: #000; */
+`
+
 export const ContentHeader = ({ children, onDismiss }: ContentHeaderProps) => (
+  <>
   <StyledContentHeader>
-    <Heading>{children}</Heading>
+    <StyledHeading>{children}</StyledHeading>
     <StyledSwapButton onClick={onDismiss} variant="text">
-      <CloseIcon color="primary" />
+      <CloseIcon color="primary"/>
     </StyledSwapButton>
   </StyledContentHeader>
+    <Divider />
+    </>
 )

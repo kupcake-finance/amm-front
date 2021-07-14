@@ -2,6 +2,7 @@ import React, { useContext, useMemo } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { Trade, TradeType } from '@pancakeswap-libs/sdk'
 import { Button, Text } from '@pancakeswap-libs/uikit'
+import Divider from '@material-ui/core/Divider'
 import { ArrowDown, AlertTriangle } from 'react-feather'
 
 import { Field } from '../../state/swap/actions'
@@ -18,10 +19,47 @@ const { main: Main } = TYPE
 const PriceInfoText = styled(Text)`
   font-style: italic;
   line-height: 1.3;
+  text-align: center;
 
   span {
     color: ${({ theme }) => theme.colors.primary};
     font-weight: 600;
+  }
+`
+
+const StyledButton = styled(Button)`
+  font-family: 'Roboto', sans-serif !important;
+  background-color: #48cae4;
+  margin-right: 5px;
+  height: 40px;
+  font-weight: 600;
+  /* width: 40px; */
+  box-shadow: none;
+  transition: all 0s ease-in-out;
+    border: 2px solid #fff !important;
+
+  & > svg,
+  & > svg > * {
+    fill: #fff;
+  }
+
+  &:hover {
+    color: #48cae4;
+    background-color: #fff;
+    border: 2px solid #48cae4 !important;
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
   }
 `
 
@@ -51,7 +89,7 @@ export default function SwapModalHeader({
     <AutoColumn gap="md" style={{ marginTop: '20px' }}>
       <RowBetween align="flex-end">
         <RowFixed gap="0px">
-          <CurrencyLogo currency={trade.inputAmount.currency} size="24px" style={{ marginRight: '12px' }} />
+          <CurrencyLogo currency={trade.inputAmount.currency} size="34px" style={{ marginRight: '12px' }} />
           <Text
             fontSize="24px"
             color={showAcceptChanges && trade.tradeType === TradeType.EXACT_OUTPUT ? theme.colors.primary : 'text'}
@@ -60,7 +98,7 @@ export default function SwapModalHeader({
           </Text>
         </RowFixed>
         <RowFixed gap="0px">
-          <Text fontSize="24px" style={{ marginLeft: '10px', fontWeight: 500 }}>
+          <Text fontSize="24px" style={{ marginLeft: '10px', fontWeight: 600, color: '#ff629a' }}>
             {trade.inputAmount.currency.symbol}
           </Text>
         </RowFixed>
@@ -70,7 +108,7 @@ export default function SwapModalHeader({
       </RowFixed>
       <RowBetween align="flex-end">
         <RowFixed gap="0px">
-          <CurrencyLogo currency={trade.outputAmount.currency} size="24px" style={{ marginRight: '12px' }} />
+          <CurrencyLogo currency={trade.outputAmount.currency} size="34px" style={{ marginRight: '12px' }} />
           <Text
             fontSize="24px"
             style={{ marginLeft: '10px', fontWeight: 500 }}
@@ -86,23 +124,26 @@ export default function SwapModalHeader({
           </Text>
         </RowFixed>
         <RowFixed gap="0px">
-          <Text fontSize="24px" style={{ marginLeft: '10px', fontWeight: 500 }}>
+          <Text fontSize="24px" style={{ marginLeft: '10px', fontWeight: 600, color: '#ff629a' }}>
             {trade.outputAmount.currency.symbol}
           </Text>
         </RowFixed>
       </RowBetween>
       {showAcceptChanges ? (
-        <SwapShowAcceptChanges justify="flex-start" gap="0px">
+        <SwapShowAcceptChanges justify="flex-start" gap="0px" style={{ width: "100%" }}>
           <RowBetween>
             <RowFixed>
-              <AlertTriangle size={20} style={{ marginRight: '8px', minWidth: 24 }} />
-              <Main color={theme.colors.primary}> Price Updated</Main>
+              <AlertTriangle size={20} style={{ marginRight: '8px', minWidth: 24, color:"#ff629a",fontWeight:900 }} />
+              <Main color="#ff629a" style={{fontWeight:600}}> Price Updated</Main>
             </RowFixed>
-            <Button onClick={onAcceptChanges}>Accept</Button>
+            <StyledButton onClick={onAcceptChanges}>Accept</StyledButton>
           </RowBetween>
         </SwapShowAcceptChanges>
       ) : null}
-      <AutoColumn justify="flex-start" gap="sm" style={{ padding: '16px 0 0' }}>
+
+      <Divider />
+
+      <AutoColumn justify="flex-start" gap="sm" style={{ padding: '16px' }}>
         {trade.tradeType === TradeType.EXACT_INPUT ? (
           <PriceInfoText>
             {`Output is estimated. You will receive at least `}
@@ -121,6 +162,9 @@ export default function SwapModalHeader({
           </PriceInfoText>
         )}
       </AutoColumn>
+
+      <Divider />
+
       {recipient !== null ? (
         <AutoColumn justify="flex-start" gap="sm" style={{ padding: '16px 0 0' }}>
           <Main>
