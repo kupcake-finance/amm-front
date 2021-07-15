@@ -9,24 +9,28 @@ const StyledNav = styled.div`
   margin-bottom: 40px;
 `
 
+const StyledTranslatedText = styled.span`
+  font-weight: 600 !important;
+`
+
 const Nav = ({ activeIndex = 0 }: { activeIndex?: number }) => (
   <StyledNav>
     <ButtonMenu activeIndex={activeIndex} size="sm" variant="subtle">
       <ButtonMenuItem id="swap-nav-link" to="/swap" as={Link}>
-        <TranslatedText translationId={8}>Swap</TranslatedText>
+        <StyledTranslatedText>Swap</StyledTranslatedText>
       </ButtonMenuItem>
       <ButtonMenuItem id="pool-nav-link" to="/pool" as={Link}>
-        <TranslatedText translationId={74}>Liquidity</TranslatedText>
+        <StyledTranslatedText>Liquidity</StyledTranslatedText>
       </ButtonMenuItem>
-      <ButtonMenuItem
+      {/* <ButtonMenuItem
         id="pool-nav-link"
         as="a"
-        href="https://www.binance.org/en/panama"
+        href="https://trade.kucoin.com/KCS-USDT"
         target="_blank"
         rel="noreferrer noopener"
       >
         Bridge
-      </ButtonMenuItem>
+      </ButtonMenuItem> */}
     </ButtonMenu>
   </StyledNav>
 )

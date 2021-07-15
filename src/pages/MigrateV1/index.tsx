@@ -68,7 +68,7 @@ export default function MigrateV1() {
   })
 
   // should never always be false, because a V1 exhchange exists for WETH on all testnets
-  const isLoading = Object.keys(V1Exchanges)?.length === 0 || V1LiquidityBalancesLoading
+  const isloading = Object.keys(V1Exchanges)?.length === 0 || V1LiquidityBalancesLoading
 
   return (
     <BodyWrapper>
@@ -92,7 +92,7 @@ export default function MigrateV1() {
               Connect to a wallet to view your V1 liquidity.
             </Body>
           </LightCard>
-        ) : isLoading ? (
+        ) : isloading ? (
           <LightCard padding="40px">
             <Body color={theme.colors.textDisabled} textAlign="center">
               <Dots>Loading</Dots>

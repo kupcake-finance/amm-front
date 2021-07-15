@@ -103,15 +103,15 @@ export const Nav = ({ activeIndex = 0 }: { activeIndex?: number }) => (
     <ButtonMenuItem id="pool-nav-link" to="/pool" as={HistoryLink}>
       <TranslatedText translationId={74}>Liquidity</TranslatedText>
     </ButtonMenuItem>
-    <ButtonMenuItem
+    {/* <ButtonMenuItem
       id="pool-nav-link"
       as="a"
-      href="https://www.binance.org/en/panama"
+      href="https://trade.kucoin.com/KCS-USDT"
       target="_blank"
       rel="noreferrer noopener"
     >
       Bridge
-    </ButtonMenuItem>
+    </ButtonMenuItem> */}
   </ButtonMenu>
 )
 

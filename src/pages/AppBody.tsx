@@ -13,8 +13,8 @@ export const BodyWrapper = styled(Card)`
   width: 600px !important;
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
-    transform: translate3d(0px, -1px, 0px);
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 0px 23px;
+    /* transform: translate3d(0px, -1px, 0px); */
   }
 
 `

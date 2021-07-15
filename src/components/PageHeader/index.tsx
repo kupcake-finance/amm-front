@@ -37,13 +37,14 @@ const StyledPageHeader = styled.div`
 const Details = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding-top: 20px;
+  margin-bottom: 20px;
 `
 
 const StyledButton = styled(IconButton)`
   background-color: #48cae4;
   /* margin-right: 5px; */
-  height: 80px;
+  height: 50px;
   width: 50px;
   box-shadow: none;
   transition: all 0s ease-in-out;
@@ -74,6 +75,7 @@ const StyledButton = styled(IconButton)`
 `
 
 const StyledLeftButton = styled(StyledButton)`
+    border-bottom-right-radius: 20px !important;
   &:hover {
       border-top-left-radius: 21px !important;
       border: 2px solid #48cae4 !important;
@@ -82,6 +84,7 @@ const StyledLeftButton = styled(StyledButton)`
 `
 
 const StyledRightButton = styled(StyledButton)`
+border-bottom-left-radius: 20px !important;
   &:hover {
       border-top-right-radius: 21px !important;
       border: 2px solid #48cae4 !important;
@@ -109,10 +112,11 @@ const PageHeader = ({ title, description, children }: PageHeaderProps) => {
 
   return (
     <StyledPageHeader>
-      <FullFlex alignItems="center" justifyContent="space-between">
+      <FullFlex alignItems="flex-start" justifyContent="space-between">
         <StyledLeftButton variant="text" onClick={onPresentRecentTransactions} title="Recent transactions">
           <HistoryIcon />
         </StyledLeftButton>
+
         <Details>
           <StyledHeading mb="8px">
             <span>KUP</span>{title}
@@ -123,6 +127,7 @@ const PageHeader = ({ title, description, children }: PageHeaderProps) => {
             </Text>
           )}
         </Details>
+
         <StyledRightButton variant="primary" onClick={onPresentSettings} title="Settings">
           <CogIcon />
         </StyledRightButton>

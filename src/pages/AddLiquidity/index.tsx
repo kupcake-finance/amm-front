@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
 import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from '@pancakeswap-libs/sdk'
-import { Button, CardBody, AddIcon, Text as UIKitText } from '@pancakeswap-libs/uikit'
+import { Button, CardBody, AddIcon, Text as UIKitText, Flex } from '@pancakeswap-libs/uikit'
 import { RouteComponentProps } from 'react-router-dom'
 import { LightCard } from 'components/Card'
 import { AutoColumn, ColumnCenter } from 'components/Column'
@@ -65,6 +65,22 @@ const StyledSwapButton = styled(Button)`
   &:active {
     background-color: #fff;
   }
+`
+const StyledAutoColumn = styled(AutoColumn)`
+  display : flex;
+
+  & > img {
+    margin-right: 25px;
+  }
+`
+
+const StyledUIKitText = styled(UIKitText)`
+  text-align: justify;
+`
+
+const RedStyledUIKitText = styled (StyledUIKitText)`
+  color: #ff629a;
+  font-weight: 600;
 `
 
 export default function AddLiquidity({
@@ -344,11 +360,14 @@ export default function AddLiquidity({
               {noLiquidity && (
                 <ColumnCenter>
                   <Pane>
-                    <AutoColumn gap="12px">
-                      <UIKitText>You are the first liquidity provider.</UIKitText>
-                      <UIKitText>The ratio of tokens you add will set the price of this pool.</UIKitText>
-                      <UIKitText>Once you are happy with the rate click supply to review.</UIKitText>
-                    </AutoColumn>
+                    <StyledAutoColumn gap="12px">
+                      <img src='/images/common/cupcake-analyst.png' alt="analyst" width={190}/>
+                      <Flex flexDirection="column" alignItems="flex-start" justifyContent="space-evenly">
+                      <RedStyledUIKitText>⚠️ You are the first liquidity provider!</RedStyledUIKitText>
+                      <StyledUIKitText>The ratio of tokens you add will set the price of this pool.</StyledUIKitText>
+                      <StyledUIKitText>Once you are happy with the rate click supply to review.</StyledUIKitText>
+                      </Flex>
+                    </StyledAutoColumn>
                   </Pane>
                 </ColumnCenter>
               )}
@@ -381,14 +400,14 @@ export default function AddLiquidity({
               />
               {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
                 <div>
-                  <UIKitText
+                  <StyledUIKitText
                     style={{ textTransform: 'uppercase', fontWeight: 600, textAlign:"center", color:"#ff629a" }}
                     color="textSubtle"
                     fontSize="15px"
                     mb="10px"
                   >
                     {noLiquidity ? 'Initial prices and pool share' : 'Prices and pool share'}
-                  </UIKitText>
+                  </StyledUIKitText>
                   <Pane>
                     <PoolPriceBar
                       currencies={currencies}
