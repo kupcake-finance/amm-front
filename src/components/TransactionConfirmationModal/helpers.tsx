@@ -26,7 +26,7 @@ export const BottomSection = styled(Section)`
 const StyledSwapButton = styled(IconButton)`
   background-color: #48cae4;
   box-shadow: none;
-  transition: all 0s ease-in-out;
+  transition: all 0.2s ease-in-out;
   border: 2px solid white;
   font-size: 30px;
   font-weight: 600;

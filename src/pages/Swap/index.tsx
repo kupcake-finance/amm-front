@@ -71,7 +71,7 @@ const StyledIconButton = styled(IconButton)`
   height: 70px;
   width: 70px;
   box-shadow: none;
-  transition: all 0s ease-in-out;
+  transition: all 0.2s ease-in-out;
   border: 6px solid white;
 
   & > svg,
@@ -101,7 +101,7 @@ const StyledIconButton = styled(IconButton)`
 const StyledSwapButton = styled(Button)`
   background-color: #48cae4;
   box-shadow: none;
-  transition: all 0s ease-in-out;
+  transition: all 0.2s ease-in-out;
   border: 2px solid white;
   font-size: 20px;
   font-weight: 600;

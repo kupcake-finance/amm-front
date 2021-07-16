@@ -24,7 +24,7 @@ const StyledButton = styled(Button)`
   font-weight: 600;
   /* width: 40px; */
   box-shadow: none;
-  transition: all 0s ease-in-out;
+  transition: all 0.2s ease-in-out;
     border: 2px solid #fff !important;
 
   & > svg,

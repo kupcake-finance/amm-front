@@ -8,7 +8,7 @@ import useI18n from 'hooks/useI18n'
 const StyledSwapButton = styled(Button)`
   background-color: #48cae4;
   box-shadow: none;
-  transition: all 0s ease-in-out;
+  transition: all 0.2s ease-in-out;
   border: 2px solid white;
   font-size: 20px;
   font-weight: 600;

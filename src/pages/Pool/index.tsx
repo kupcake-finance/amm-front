@@ -29,7 +29,7 @@ const StyledSwapButton = styled(Button)`
   color: #fff;
   display: inline-block !important;
   box-shadow: none;
-  transition: all 0s ease-in-out;
+  transition: all 0.2s ease-in-out;
   border: 2px solid white;
   font-size: 25px;
   font-weight: 600;

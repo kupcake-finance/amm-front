@@ -47,7 +47,7 @@ const StyledButton = styled(IconButton)`
   height: 50px;
   width: 50px;
   box-shadow: none;
-  transition: all 0s ease-in-out;
+  transition: all 0.2s ease-in-out;
   border-radius: 0 !important;
 
   & > svg,
