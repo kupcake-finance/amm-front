@@ -81,7 +81,7 @@ export default function HeroBlock() {
         <MainTitle as="h1" size="xl" mb="24px" mt="30px" color="tertiary">
           <PinkSpan>Ku</PinkSpan>pcakeSwap
         </MainTitle>
-        <SubTitle>The #1 AMM on Kucoin Community Chain</SubTitle>
+        <SubTitle>The Aspiring Leading DEX on Kucoin Community Chain</SubTitle>
       </Flex>
     </Hero>
   )
