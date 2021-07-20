@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { JSBI, Pair, Percent } from '@pancakeswap-libs/sdk'
+import { JSBI, Pair, Percent } from '@pancakeswap-libs/sdk-v2'
 import { StyledInternalLink, TYPE } from 'components/Shared'
 import { Button, Card as UIKitCard, CardBody, Text } from '@pancakeswap-libs/uikit'
 import { darken } from 'polished'
