@@ -16,8 +16,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
+import HomeIcon from '@material-ui/icons/Home'
 import MailIcon from '@material-ui/icons/Mail'
+import UIMenu from '../Menu'
 
 const drawerWidth = 240
 
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
     },
     appBar: {
-      backgroundColor: 'rgba(255,255,255, 0.95)',
+      backgroundColor: 'rgba(255,255,255, 1)',
       transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -94,6 +95,22 @@ const LogoBanner = styled.img`
 `
 const Button = styled.button``
 
+const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    flex-direction: column;
+
+    & > *, & > * > button {
+      width: 170px !important;
+      height: 40px;
+      font-size: 17px;
+      font-weight: 600;
+      margin: 5px auto;
+    }
+  }
+`
 export default function PersistentDrawerLeft() {
   const classes = useStyles()
   const theme = useTheme()
@@ -146,39 +163,28 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          <ListItem>
-            <Button className="metamask-button">
-              <img
-                className="metamask-image"
-                src="/images/common/metamask.png"
-                style={{ height: '34px' }}
-                alt="metamask"
-              />
-            </Button>
-            {addressMeta === null ? (
-              <>
-                <span className="red meta-address">
-                  {/* First 4 chars */}
-                  0x04
-                </span>
-                <span className=""> ... </span>
-                <span className="blue meta-address">
-                  {/* last 4 chars */}
-                  5678
-                </span>
-              </>
-            ) : (
-              <span className="orangered meta-address"> Connect Metamask </span>
-            )}
+          <ListItem button key="Home">
+            <a href="https://kupcakeswap.finance">
+              <ListItemText primary="Home" />
+            </a>
           </ListItem>
           <ListItem button key="Presale">
             <a href="https://presale.kupcakeswap.finance">
               <ListItemText primary="Presale" />
             </a>
           </ListItem>
-          <ListItem button key="Dapp (soon)">
-            <ListItemText primary="Dapp (soon)" />
+          <Divider />
+          <ListItem button key="Swap">
+            <a href="https://dex.kupcakeswap.finance/#/swap">
+              <ListItemText primary="Swap" />
+            </a>
           </ListItem>
+          <ListItem button key="Liquidity">
+            <a href="https://dex.kupcakeswap.finance/#/pool">
+              <ListItemText primary="Liquidity" />
+            </a>
+          </ListItem>
+          <Divider />
           <ListItem button key="Documentation">
             <a href="https://docs.kupcakeswap.finance">
               <ListItemText primary="Documentation" />
@@ -211,6 +217,10 @@ export default function PersistentDrawerLeft() {
               <ListItemText primary="Twitter" />
             </a>
           </ListItem>
+          <Divider style={{ marginBottom: '20px' }} />
+          <Flex>
+            <UIMenu />
+          </Flex>
         </List>
       </Drawer>
     </div>

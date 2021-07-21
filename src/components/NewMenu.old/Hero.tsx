@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-scroll'
+import styled from 'styled-components' 
 import { Button, Flex, Card, CardBody, Heading, Text } from '@pancakeswap-libs/uikit' 
 
 const PinkSpan = styled.span`

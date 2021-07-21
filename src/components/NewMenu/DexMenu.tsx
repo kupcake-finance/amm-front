@@ -6,8 +6,11 @@ import Menu, { MenuProps } from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import TelegramIcon from '@material-ui/icons/Telegram'
-import TwitterIcon from '@material-ui/icons/Twitter'
+import DescriptionIcon from '@material-ui/icons/Description'
+import TimelineIcon from '@material-ui/icons/Timeline'
+import AutorenewIcon from '@material-ui/icons/Autorenew'
+import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 const StyledMenu = withStyles({
   paper: {
@@ -30,6 +33,8 @@ const StyledMenu = withStyles({
   />
 ))
 
+
+
 const IconImage = styled.img`
   width: 24px;
 `
@@ -45,9 +50,9 @@ const StyledButton = styled(Button)`
   padding: 0px !important;
   margin-left: 10px !important;
 
-&:hover{
-  color: #ff629a !important;
-}
+  &:hover{
+    color: #ff629a !important;
+  }
 `
 
 const StyledMenuItem = withStyles((theme) => ({
@@ -64,6 +69,10 @@ const StyledMenuItem = withStyles((theme) => ({
 
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+
+  const baseUrl = (route) => {
+    return window.location.origin + route;
+  }
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -82,33 +91,33 @@ export default function CustomizedMenus() {
         color="inherit"
         onClick={handleClick}
       >
-        Follow Us
+        DEX
       </StyledButton>
       <StyledMenu id="customized-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-        <a href="https://twitter.com/KupcakeSwap" target="_blank" rel="noreferrer">
+        <a href="https://dex.kupcakeswap.finance/#/swap">
           <StyledMenuItem>
             <ListItemIcon>
-              <TwitterIcon fontSize="small" />
+              <AutorenewIcon fontSize="medium" />
             </ListItemIcon>
-            <ListItemText primary="Twitter" />
+            <ListItemText primary="Swap" />
           </StyledMenuItem>
         </a>
 
-        <a href="https://t.me/KupcakeSwap" target="_blank" rel="noreferrer">
+        <a href="https://dex.kupcakeswap.finance/#/pool">
           <StyledMenuItem>
             <ListItemIcon>
-              <TelegramIcon fontSize="small" />
+              <CompareArrowsIcon fontSize="medium" />
             </ListItemIcon>
-            <ListItemText primary="TG English" />
+            <ListItemText primary="Liquidity" />
           </StyledMenuItem>
         </a>
 
-        <a href="https://t.me/KupcakeSwap_ann" target="_blank" rel="noreferrer">
+        <a href="https://qugkgjziv7l.typeform.com/to/PxxOYSX4">
           <StyledMenuItem>
             <ListItemIcon>
-              <TelegramIcon fontSize="small" />
+              <PlaylistAddIcon fontSize="medium" />
             </ListItemIcon>
-            <ListItemText primary="TG Announcements" />
+            <ListItemText primary="Submit &amp; list your token" />
           </StyledMenuItem>
         </a>
       </StyledMenu>

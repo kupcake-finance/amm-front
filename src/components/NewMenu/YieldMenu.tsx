@@ -6,8 +6,11 @@ import Menu, { MenuProps } from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import TelegramIcon from '@material-ui/icons/Telegram'
-import TwitterIcon from '@material-ui/icons/Twitter'
+import DescriptionIcon from '@material-ui/icons/Description'
+import TimelineIcon from '@material-ui/icons/Timeline'
+import AutorenewIcon from '@material-ui/icons/Autorenew'
+import TollIcon from '@material-ui/icons/Toll';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 
 const StyledMenu = withStyles({
   paper: {
@@ -65,6 +68,10 @@ const StyledMenuItem = withStyles((theme) => ({
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
+  const baseUrl = (route) => {
+    return window.location.origin + route;
+  }
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -82,33 +89,24 @@ export default function CustomizedMenus() {
         color="inherit"
         onClick={handleClick}
       >
-        Follow Us
+        Yield
       </StyledButton>
       <StyledMenu id="customized-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-        <a href="https://twitter.com/KupcakeSwap" target="_blank" rel="noreferrer">
+        <a href={baseUrl('/farms')}>
           <StyledMenuItem>
             <ListItemIcon>
-              <TwitterIcon fontSize="small" />
+              <TollIcon fontSize="medium" />
             </ListItemIcon>
-            <ListItemText primary="Twitter" />
+            <ListItemText primary="Farms" />
           </StyledMenuItem>
         </a>
 
-        <a href="https://t.me/KupcakeSwap" target="_blank" rel="noreferrer">
+        <a href={baseUrl('/pools')}>
           <StyledMenuItem>
             <ListItemIcon>
-              <TelegramIcon fontSize="small" />
+              <RadioButtonUncheckedIcon fontSize="small" />
             </ListItemIcon>
-            <ListItemText primary="TG English" />
-          </StyledMenuItem>
-        </a>
-
-        <a href="https://t.me/KupcakeSwap_ann" target="_blank" rel="noreferrer">
-          <StyledMenuItem>
-            <ListItemIcon>
-              <TelegramIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="TG Announcements" />
+            <ListItemText primary="Pools" />
           </StyledMenuItem>
         </a>
       </StyledMenu>

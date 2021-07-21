@@ -11,9 +11,8 @@ import TwitterIcon from '@material-ui/icons/Twitter'
 
 const StyledMenu = withStyles({
   paper: {
-    marginTop: '20px',
     border: '1px solid #d3d4d5',
-  },
+  }, 
 })((props: MenuProps) => (
   <Menu
     elevation={0}
@@ -44,10 +43,6 @@ const StyledButton = styled(Button)`
   /* width: 30px !important; */
   padding: 0px !important;
   margin-left: 10px !important;
-
-&:hover{
-  color: #ff629a !important;
-}
 `
 
 const StyledMenuItem = withStyles((theme) => ({

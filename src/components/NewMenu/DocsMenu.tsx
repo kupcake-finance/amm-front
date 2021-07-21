@@ -9,10 +9,13 @@ import ListItemText from '@material-ui/core/ListItemText'
 import DescriptionIcon from '@material-ui/icons/Description'
 import TimelineIcon from '@material-ui/icons/Timeline'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const StyledMenu = withStyles({
   paper: {
+    marginTop: '20px',
     border: '1px solid #d3d4d5',
+    boxShadow: '0 0 15px #d3d4d5 !important'
   },
 })((props: MenuProps) => (
   <Menu
@@ -44,6 +47,10 @@ const StyledButton = styled(Button)`
   /* width: 30px !important; */
   padding: 0px !important;
   margin-left: 10px !important;
+
+  &:hover {
+    color: #ff629a !important;
+  }
 `
 
 const StyledMenuItem = withStyles((theme) => ({
@@ -99,12 +106,21 @@ export default function CustomizedMenus() {
           </StyledMenuItem>
         </a>
 
-        <a href="https://docs.kupcakeswap.finance/how-to-buy" target="_blank" rel="noreferrer">
+        <a href="https://docs.kupcakeswap.finance/technical-info/howto-buy" target="_blank" rel="noreferrer">
           <StyledMenuItem>
             <ListItemIcon>
               <HelpOutlineIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText primary="How to buy ?" />
+          </StyledMenuItem>
+        </a>
+
+        <a href="https://github.com/kupcake-finance" target="_blank" rel="noreferrer">
+          <StyledMenuItem>
+            <ListItemIcon>
+              <GitHubIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Github" />
           </StyledMenuItem>
         </a>
       </StyledMenu>

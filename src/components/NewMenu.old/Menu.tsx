@@ -1,16 +1,15 @@
 import React, { useRef, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-// import { Link } from 'react-scroll'
 import { withStyles } from '@material-ui/core/styles'
 import { Button, Flex, Card, CardBody, Heading, Text } from '@pancakeswap-libs/uikit' 
-import UIMenu from '../Menu'
 import CustomizedMenus from './CustomizedMenus'
 import DocsMenu from './DocsMenu'
 import MobileMenu from './MobileMenu'
-import YieldMenu from './YieldMenu'
-import DexMenu from './DexMenu'
-// import MetamaskMenu from './MetamaskMenu'
+import MetamaskMenu from './MetamaskMenu'
+
+// import LANDING from '../../../public/images/common/landing-bg-shady.png'
+// import FARMS from '../../../public/images/common/landing-bg-shady.png'
 
 const MenuContainer = styled.div`
   justify-content: space-between;
@@ -70,12 +69,6 @@ const StyledA = styled.a`
 
   & > img {
     max-height: 24px;
-  }
-
-
-
-  &:hover{
-    color: #ff629a !important;
   }
 `
 
@@ -141,24 +134,22 @@ const Background = styled.div`
   width: 100%;
   height: 100%;
   min-height: 1400px;
-  background-image: url('/images/common/farms-bg-shady.png');
+  background-image: url('/images/common/swap-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   z-index: -1;
 `
 
-const WebContainer = styled.div``
-
 export default function Menu() {
   const location = useLocation()
 
   const setPathName = () => {
-    const shortname = location.pathname.substring(0, 6)
+    const shortname = location.pathname.substring(0,6);
 
-    return shortname === '/farms' || shortname === '/pools'
-      ? '/images/common/farms-bg-shady.png'
-      : '/images/common/landing-bg-shady.png'
+    return shortname === '/farms'
+      ?  '/images/common/swap-bg.png'
+      :  '/images/common/swap-bg.png'
   }
   return (
     <>
@@ -173,31 +164,21 @@ export default function Menu() {
           </a>
         </>
         <LinksContainer>
-          <StyledA href="https://kupcakeswap.finance">
-            Home
-          </StyledA>
-          <StyledA href="https://presale.kupcakeswap.finance">
-            Presale
-          </StyledA>
+          <StyledA href="/">Presale<span>(soon)</span></StyledA>
           {/* <StyledA href="/swap">Swap</StyledA> */}
           {/* <StyledA href="/liquidity">Liquidity</StyledA> */}
           {/* <StyledA href="/farms">Farms</StyledA> */}
-          {/* <StyledA href="/pools">Pools</StyledA> */}
-          <DexMenu />
-          <YieldMenu />
           <DocsMenu />
           <CustomizedMenus />
         </LinksContainer>
 
-        {/* <Flex justify-items="space-between" alignItems="center">
+        <Flex justify-items="space-between" alignItems="center">
+          {/* <MetamaskMenu /> */}
           <RobotoButton>
             <SmallImage src="/images/common/logo.png" alt="token" />
             $00,00
           </RobotoButton>
-        </Flex> */}
-        <WebContainer>
-          <UIMenu />
-        </WebContainer>
+        </Flex>
       </MenuContainer>
     </>
   )
