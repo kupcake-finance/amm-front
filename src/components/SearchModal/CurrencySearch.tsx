@@ -4,7 +4,7 @@ import { Text, CloseIcon } from '@pancakeswap-libs/uikit'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { FixedSizeList } from 'react-window'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { useActiveWeb3React } from '../../hooks'
 import { AppState } from '../../state'
@@ -27,6 +27,35 @@ import TranslatedText from '../TranslatedText'
 import { TranslateString } from '../../utils/translateTextHelpers'
 
 const { main: Main } = TYPE
+const StyledColumn = styled(Column)`
+  border-radius: 19px;
+  border: 6px solid #ff629a;
+`
+const StyledPaddedColumn = styled(PaddedColumn)``
+
+const StyledTranslatedText = styled.div`
+  font-size: 25px !important;
+  display: flex;
+  color: #48cae4;
+  font-weight: 600;
+`
+const StyledSearchInput = styled(SearchInput)`
+    font-family: 'M PLUS Rounded 1c',sans-serif !important;
+  font-weight: 500;
+  border: 2px solid #48cae4;
+
+  &:focus, &:active, &:hover{
+  border: 2px solid #48cae4;
+  }
+`
+
+const SmallStyledTranslatedText = styled(StyledTranslatedText)`
+  font-size: 18px !important;
+
+  & > span {
+    color: #ff629a !important;
+  }
+`
 
 interface CurrencySearchProps {
   isOpen: boolean
@@ -141,21 +170,18 @@ export function CurrencySearch({
   const selectedListInfo = useSelectedListInfo()
 
   return (
-    <Column style={{ width: '100%', flex: '1 1' }}>
-      <PaddedColumn gap="14px">
+    <StyledColumn style={{ width: '100%', flex: '1 1' }}>
+      <StyledPaddedColumn gap="14px">
         <RowBetween>
           <Text>
-            <TranslatedText translationId={82}>Select a token</TranslatedText>
-            <QuestionHelper
-              text={TranslateString(
-                130,
-                'Find a token by searching for its name or symbol or by pasting its address below.'
-              )}
-            />
+            <StyledTranslatedText>
+              Select a token
+              <QuestionHelper text="Find a token by searching for its name or symbol or by pasting its address below." />
+            </StyledTranslatedText>
           </Text>
           <CloseIcon onClick={onDismiss} />
         </RowBetween>
-        <SearchInput
+        <StyledSearchInput
           type="text"
           id="token-search-input"
           placeholder={t('tokenSearchPlaceholder')}
@@ -169,11 +195,11 @@ export function CurrencySearch({
         )}
         <RowBetween>
           <Text fontSize="14px">
-            <TranslatedText translationId={126}>Token name</TranslatedText>
+            <SmallStyledTranslatedText ><span>Token&nbsp;</span> name</SmallStyledTranslatedText>
           </Text>
           <SortButton ascending={invertSearchOrder} toggleSortOrder={() => setInvertSearchOrder((iso) => !iso)} />
         </RowBetween>
-      </PaddedColumn>
+      </StyledPaddedColumn>
 
       <Separator />
 
@@ -221,7 +247,7 @@ export function CurrencySearch({
           </Card>
         </>
       )}
-    </Column>
+    </StyledColumn>
   )
 }
 

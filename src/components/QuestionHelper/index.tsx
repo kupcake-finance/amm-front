@@ -13,8 +13,9 @@ const QuestionWrapper = styled.div`
   outline: none;
   cursor: default;
   border-radius: 36px;
-  background-color: ${({ theme }) => theme.colors.invertedContrast};
-  color: ${({ theme }) => theme.colors.textSubtle};
+  background-color: transparent;
+  color: #48cae4 !important;
+  border-radius: 20px;
 
   :hover,
   :focus {
@@ -32,7 +33,7 @@ export default function QuestionHelper({ text }: { text: string }) {
     <span style={{ marginLeft: 4 }}>
       <Tooltip text={text} show={show}>
         <QuestionWrapper onClick={open} onMouseEnter={open} onMouseLeave={close}>
-          <Question size={16} />
+          <Question size={16} color="#000" />
         </QuestionWrapper>
       </Tooltip>
     </span>

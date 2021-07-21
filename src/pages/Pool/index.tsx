@@ -77,9 +77,10 @@ export default function Pool() {
     () => trackedTokenPairs.map((tokens) => ({ liquidityToken: toV2LiquidityToken(tokens), tokens })),
     [trackedTokenPairs]
   )
-  const liquidityTokens = useMemo(() => tokenPairsWithLiquidityTokens.map((tpwlt) => tpwlt.liquidityToken), [
-    tokenPairsWithLiquidityTokens,
-  ])
+  const liquidityTokens = useMemo(
+    () => tokenPairsWithLiquidityTokens.map((tpwlt) => tpwlt.liquidityToken),
+    [tokenPairsWithLiquidityTokens]
+  )
   const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
     account ?? undefined,
     liquidityTokens
@@ -118,23 +119,18 @@ export default function Pool() {
                 <Text style={{ color: '#ff629a', fontWeight: 600 }} fontSize="20px">
                   YOUR LIQUIDITY
                 </Text>
-                <Question
-                  text={TranslateString(
-                    130,
-                    'When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below.'
-                  )}
-                />
+                <Question text="When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below." />
               </RowCenter>
 
               {!account ? (
                 <GreyCard padding="40px">
-                  <Body color={theme.colors.textDisabled} textAlign="center">
+                  <Body color="#747474" textAlign="center">
                     Connect to a wallet to view your liquidity.
                   </Body>
                 </GreyCard>
               ) : v2IsLoading ? (
                 <GreyCard padding="40px">
-                  <Body color={theme.colors.textDisabled} textAlign="center">
+                  <Body color="#747474" textAlign="center">
                     <Dots>Loading</Dots>
                   </Body>
                 </GreyCard>
@@ -168,8 +164,8 @@ export default function Pool() {
                     {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
                   </StyledInternalLink>
                 </Text>
-                <Text fontSize="14px" style={{ padding: '.5rem 0 .5rem 0' }}>
-                  Are your LP tokens in a farm, unstake them to see them here.
+                <Text fontSize="14px" style={{ padding: '.5rem 0 .5rem 0', textAlign:"center" }}>
+                  Are your LP tokens in a farm? <br/>Unstake them first and come back to see them show up here.
                 </Text>
               </div>
             </AutoColumn>

@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import styled from 'styled-components'
 import { CheckmarkCircleIcon, ErrorIcon, Flex, LinkExternal, Text, Modal, Button } from '@pancakeswap-libs/uikit'
 import { useActiveWeb3React } from 'hooks'
 import { getEtherscanLink } from 'utils'
@@ -9,6 +10,42 @@ import Loader from 'components/Loader'
 type RecentTransactionsModalProps = {
   onDismiss?: () => void
 }
+
+const StyledButton = styled(Button)`
+  font-family: 'Roboto', sans-serif !important;
+  background-color: #48cae4;
+  margin-right: 5px;
+  height: 40px;
+  font-weight: 600;
+  /* width: 40px; */
+  box-shadow: none;
+  transition: all 0.2s ease-in-out;
+    border: 2px solid #fff !important;
+
+  & > svg,
+  & > svg > * {
+    fill: #fff;
+  }
+
+  &:hover {
+    color: #48cae4;
+    background-color: #fff;
+    border: 2px solid #48cae4 !important;
+
+    & > svg,
+    & > svg > * {
+      fill: #48cae4;
+    }
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:active {
+    background-color: #fff;
+  }
+`
 
 // TODO: Fix UI Kit typings
 const defaultOnDismiss = () => null
@@ -46,9 +83,9 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
           <Text mb="8px" bold>
             Please connect your wallet to view your recent transactions
           </Text>
-          <Button variant="tertiary" size="sm" onClick={onDismiss}>
+          <StyledButton variant="tertiary" size="sm" onClick={onDismiss}>
             Close
-          </Button>
+          </StyledButton>
         </Flex>
       )}
       {account && chainId && sortedRecentTransactions.length === 0 && (
@@ -56,9 +93,9 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
           <Text mb="8px" bold>
             No recent transactions
           </Text>
-          <Button variant="tertiary" size="sm" onClick={onDismiss}>
+          <StyledButton variant="tertiary" size="sm" onClick={onDismiss}>
             Close
-          </Button>
+          </StyledButton>
         </Flex>
       )}
       {account &&
