@@ -107,6 +107,7 @@ export function useSelectedListInfo(): { current: TokenList | null; pending: Tok
 // returns all downloaded current lists
 export function useAllLists(): TokenList[] {
   const lists = useSelector<AppState, AppState['lists']['byUrl']>(state => state.lists.byUrl)
+  console.log("lists: ", lists)
 
   return useMemo(
     () =>

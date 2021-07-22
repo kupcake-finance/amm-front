@@ -10,31 +10,6 @@
     "logoURI": "/images/coins/wKUP.png",
     "keywords": ["pancake", "default"],
     "tokens": [{
-            "name": "tokenA",
-            "symbol": "TKA",
-            "address": "0x3b12F746F442F47D66cE4b1ecEFe9356b3104491",
-            "chainId": 322,
-            "decimals": 18
-        }, {
-            "name": "tokenB",
-            "symbol": "TKB",
-            "address": "0x3b12F746F442F47D66cE4b1ecEFe9356b3104491",
-            "chainId": 322,
-            "decimals": 18
-        }, {
-            "name": "tokenC",
-            "symbol": "TKC",
-            "address": "0x41D28dcCa72409e1f0d5F294925a9dF29427f315",
-            "chainId": 322,
-            "decimals": 18
-        }, {
-            "name": "tokenD",
-            "symbol": "TKD",
-            "address": "0x5E899A8cEbe8AF95C0ad17885A87d6fF645d0Ba3",
-            "chainId": 322,
-            "decimals": 18
-        },
-        {
             "name": "Goose Golden Egg",
             "symbol": "EGG",
             "address": "0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6",
@@ -48,14 +23,7 @@
             "chainId": 56,
             "decimals": 18
         },
-        {
-            "name": "WKUP Token",
-            "symbol": "WKUP",
-            "address": "0xae13d989dac2f0debff460ac112a837c89baa7cd",
-            "chainId": 97,
-            "decimals": 18,
-            "logoURI": "/images/coins/BUSD.png"
-        },
+
         {
             "name": "WKUP Token",
             "symbol": "WKUP",
@@ -63,22 +31,8 @@
             "chainId": 56,
             "decimals": 18
         },
-        {
-            "name": "LP3 Token",
-            "symbol": "LP3",
-            "address": "0xe70b7523f4bffa1f2e88d2ba709afd026030f412",
-            "chainId": 97,
-            "decimals": 18,
-            "logoURI": "/images/coins/ETH.png"
-        },
-        {
-            "name": "BUSD Token",
-            "symbol": "BUSD",
-            "address": "0x615446C0Fd5eA8A5FD7fb763f3FC2C58774474F3",
-            "chainId": 97,
-            "decimals": 18,
-            "logoURI": "/images/coins/BTC.png"
-        },
+
+
         {
             "name": "Bakery Token",
             "symbol": "BAKE",
